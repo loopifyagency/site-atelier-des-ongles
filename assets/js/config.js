@@ -16,13 +16,12 @@ window.ATELIER = {
   instagram: "https://www.instagram.com/latelierdesonglesbrest/",
   mapsUrl: "https://maps.app.goo.gl/kYwHRLrQQUgvHvAy6",
 
-  /* Vraies photos pour la galerie (remplacent les illustrations dessinées).
-     1) Déposer les images dans le dossier assets/img/
+  /* Ajouter d'autres photos à la galerie (elles s'ajoutent aux réalisations déjà présentes).
+     1) Déposer les images dans le dossier assets/img/  (JPG ou WebP, ~1200 px de large, < 300 Ko)
      2) Les lister ici, par exemple :
         photos: [
-          { src: "assets/img/french.jpg",  alt: "French amande, vernis blanc nacré", label: "French" },
-          { src: "assets/img/mirror.jpg",  alt: "Effet miroir chromé",               label: "Effet miroir" }
-        ]
-     Laisser [] pour garder les illustrations. */
+          { src: "assets/img/french-amande.jpg", alt: "French amande, vernis blanc nacré", label: "French", text: "Le blanc nacré, la ligne fine." },
+          { src: "assets/img/miroir.jpg",         alt: "Effet miroir chromé",               label: "Effet miroir" }
+        ] */
   photos: []
 };

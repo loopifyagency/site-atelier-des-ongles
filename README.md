@@ -27,16 +27,19 @@ Un nom de domaine personnalisé (ex. `latelierdesongles.fr`) se règle dans la m
 | `bookingUrl` | Lien de réservation en ligne (Planity, Treatwell, Calendly…). Facultatif : sinon « Prendre rendez-vous » mène à la section rendez-vous (appel / Instagram). |
 | `photos` | Vraies photos pour la galerie (voir plus bas). |
 
-### Remplacer les illustrations par de vraies photos
-1. Déposer les images dans `assets/img/`.
-2. Les lister dans `photos` de `config.js` :
+### Photos
+Le site contient déjà **3 vraies photos** (`assets/img/`) : deux réalisations (hero + galerie) et l’intérieur du salon (dernière étape de « l’histoire »).
+Les autres tuiles de la galerie sont des illustrations dessinées (palette des designs possibles).
+
+Pour ajouter d’autres photos de réalisations :
+1. Déposer les images dans `assets/img/` (JPG ou WebP, ~1200 px de large, moins de 300 Ko).
+2. Les lister dans `photos` de `config.js` : elles s’ajoutent automatiquement à la galerie, avec le même effet d’arche.
    ```js
    photos: [
-     { src: "assets/img/french.jpg", alt: "French amande, vernis blanc nacré", label: "French" },
-     { src: "assets/img/miroir.jpg", alt: "Effet miroir chromé",               label: "Effet miroir" }
+     { src: "assets/img/french.jpg", alt: "French amande, vernis blanc nacré", label: "French", text: "Le blanc nacré, la ligne fine." }
    ]
    ```
-   (Photos en JPG/WebP, ~1200 px de large, moins de 300 Ko chacune.)
+Les photos fournies mesurent environ 700 px de large : elles sont nettes dans les cadres du site, mais des originaux plus grands (≥ 1200 px) rendraient encore mieux.
 
 ## 3. Modifier les contenus
 - **Tarifs et durées** : section `#prestations` de `index.html` (une `<li>` par prestation).

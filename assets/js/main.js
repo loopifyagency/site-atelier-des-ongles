@@ -59,9 +59,10 @@
 
     /* Données structurées : on y glisse le téléphone une fois renseigné */
     var ld = $('#ld-json');
-    if (ld && (telIntl || cfg.siteUrl)) {
+    if (ld) {
       try {
         var data = JSON.parse(ld.textContent);
+        data.image = ['assets/img/realisation-aura-fleurs-dorures.jpg', 'assets/img/realisation-aura-pastel.jpg', 'assets/img/salon-interieur.jpg'].map(function (u) { return new URL(u, location.href).href; });
         if (telIntl) data.telephone = telIntl;
         if (cfg.siteUrl) data.url = cfg.siteUrl;
         ld.textContent = JSON.stringify(data);
@@ -104,14 +105,12 @@
   function buildGallery() {
     var grid = $('#galGrid');
     if (!grid || !cfg.photos || !cfg.photos.length) return;
-    grid.innerHTML = cfg.photos.map(function (p) {
-      return '<li class="tile tile--photo"><div class="tile__fig tilt"><div class="tile__bg">' +
+    grid.insertAdjacentHTML('beforeend', cfg.photos.map(function (p) {
+      return '<li class="tile tile--photo" data-design="photo"><div class="tile__fig tilt"><div class="tile__bg">' +
         '<img class="tile__img" src="' + esc(p.src) + '" alt="' + esc(p.alt || p.label || '') + '" loading="lazy" decoding="async"></div>' +
-        (p.label ? '<div class="tile__cap"><strong>' + esc(p.label) + '</strong>' + (p.text ? '<span>' + esc(p.text) + '</span>' : '') + '</div>' : '') +
+        '<div class="tile__cap"><em class="tile__tag">Réalisation de l’atelier</em>' + (p.label ? '<strong>' + esc(p.label) + '</strong>' : '') + (p.text ? '<span>' + esc(p.text) + '</span>' : '') + '</div>' +
         '</div><i class="tile__curtain"></i></li>';
-    }).join('');
-    var note = $('.gal__head .lead');
-    if (note) note.innerHTML = 'Les réalisations de l’atelier. Retrouvez-en bien plus sur <a class="ulink" href="' + esc(insta) + '" target="_blank" rel="noopener">Instagram&nbsp;<span class="sr-only">(nouvel onglet)</span></a>.';
+    }).join(''));
   }
 
   /* ───────────── 4. Sélecteur de forme (morphing d'ongle) ───────────── */
@@ -546,6 +545,7 @@
       tl.fromTo('.sl__s--sel', { y: 0 }, { y: -22, duration: .6, ease: 'power3.out' }, 2.7);
       tl.fromTo('.sl__nail--duo-a', { x: -90, rotate: -20 }, { x: 0, rotate: -9, duration: .7, ease: 'power3.out' }, 3.55);
       tl.fromTo('.sl__nail--duo-b', { x: 90, rotate: 20 }, { x: 0, rotate: 9, duration: .7, ease: 'power3.out' }, 3.62);
+      tl.fromTo('.sl--6 > img', { scale: 1.16, xPercent: 3 }, { scale: 1, xPercent: 0, duration: 1.2, ease: 'none' }, 4.62);
       tl.set({}, {}, n);
 
       gsap.to('.sl__orbit', { rotation: 360, svgOrigin: '200 260', duration: 60, ease: 'none', repeat: -1 });
